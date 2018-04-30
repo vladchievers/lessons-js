@@ -1,19 +1,19 @@
 .sq{
 	display: inline-block;
-	width:  200px;
-	height:  200px;
+	width:  150px;
+	height:  150px;
 	margin:  20px;
 	background-color: lightblue;
 	color:  red;
 	font-size: 30px;
 	text-align: center;
-	line-height: 200px;
+	line-height: 150px;
 }
 .block{
 	width:  100px;
 	height:  100px;
 	background-color: #000;
-	position: absolute;
+	position: fixed;
 	top:  0;
 	left:  0;
 }
