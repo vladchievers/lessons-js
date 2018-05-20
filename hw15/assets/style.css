@@ -1,0 +1,22 @@
+.select{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+p{
+	max-width: 600px
+}
+.select select{
+	box-sizing: border-box;
+	width: 200px;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+button{
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	background: #000;
+	color: #fff;
+	border-radius: 5px;
+}

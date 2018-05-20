@@ -8,7 +8,7 @@
 .slider-list{
 	font-size: 0;
 	white-space: nowrap;
-	
+	transition: all .5s;
 }
 .arrow{
 	position: absolute;
