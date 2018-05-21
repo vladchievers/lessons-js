@@ -20,3 +20,13 @@ button{
 	color: #fff;
 	border-radius: 5px;
 }
+.loader{
+	display: none;
+	width: 150px;
+	position: absolute;
+	top:  100px;
+	right:  20px;
+}
+img{
+	max-width:  100%;
+}
