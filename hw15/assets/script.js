@@ -13,7 +13,6 @@ $('button').on('click', function(){
 		error: function(error) {
 			$('body').prepend(error.responseText);
 		},
-
 		complete: function() {
 			$('.loader').hide();
 		}
