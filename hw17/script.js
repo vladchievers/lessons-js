@@ -4,7 +4,7 @@ function warning(event){
 		return res;
 	};
 };
-
+console.log(warning('ololo')('kokoko'));
 var ololo = warning('Ремонт дороги');
 console.log(ololo('Канатная 22')); 
 console.log(ololo('Пушкинская 22')); 
