@@ -9,31 +9,31 @@ Hamburger.TOPPING_SAUCE = {price: 15, col: 0};
 
 
 function Hamburger (size , stuffing) {
+	this._size = size;
+	this._stuffing = stuffing;
 	this._topping = {
 		price: 0,
 		col: 0
 	};
+};
 
-	this.addTopping = function(topping){
-		this._topping.price += topping.price;
-		this._topping.col +=  topping.col;
-		return this._topping;
-	};
+Hamburger.prototype.calculatePrice = function() {
+	return  this._size.price + this._stuffing.price + this._topping.price;	
+};
 
-	this.removeTopping = function(){
-		this._topping.price = 0;
-		this._topping.col =  0;
-		return this._topping;
-	};
-
-	this.calculatePrice = function() {
-		return  size.price + stuffing.price + this._topping.price;	
-	};
-
-	this.calculateCalories = function() {
-		return size.col + stuffing.col + this._topping.col;
-	};
-}
+Hamburger.prototype.calculateCalories = function() {
+	return this._size.col + this._stuffing.col + this._topping.col;
+};
+Hamburger.prototype.addTopping = function(topping){
+	this._topping.price += topping.price;
+	this._topping.col +=  topping.col;
+	return this._topping;
+};
+Hamburger.prototype.removeTopping = function(){
+	this._topping.price = 0;
+	this._topping.col =  0;
+	return this._topping;
+};
 
 var hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_POTATE);
 
