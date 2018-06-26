@@ -30,8 +30,8 @@ class Clear {
 			parent.appendChild(wrapper);
 
 			el.addEventListener('keyup', ()=> { 				
-				if(el.value !== "") {
-					x.classList.add('active');
+				if(el.value !== "") { 
+					x.classList.add('active')
 				}else{
 					x.classList.remove('active');
 				}
