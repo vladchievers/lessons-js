@@ -1,5 +1,5 @@
 class Hamburger {
-	constructor (size , stuffing){
+	constructor (size = {price: 0, col: 0} , stuffing = {price: 0, col: 0}){
 		this.size = size;
 		this.stuffing = stuffing;
 		this.topping = {price: 0,col: 0};
@@ -33,13 +33,30 @@ class Hamburger {
 		return this.topping;
 	};
 
+
+
+
 	[Symbol.iterator]() {
-		return Object.values(this);
-	}
+		const keys = Object.keys(this);
+		let index = 0;
+		return{
+			next() {
+				if(index === keys.length){
+					return {done: true};
+				};
+
+				return { 
+					value: keys[index++],
+					done: false 
+				};
+
+			}
+		};
+	};
+
 };
-const keys = Hamburger[Symbol.iterator]();
-console.log(keys);
-const hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_POTATE);
+
+const hamburger = new Hamburger(Hamburger.SIZE_BIG, Hamburger.STUFFING_SALAT);
 
 console.log("Price " + hamburger.calculatePrice());
 console.log("Calories " + hamburger.calculateCalories());
@@ -51,5 +68,11 @@ console.log("Calories with topping " + hamburger.calculateCalories());
 hamburger.removeTopping();
 console.log("Price " + hamburger.calculatePrice());
 console.log("Calories " + hamburger.calculateCalories());
+
+console.log('=========')
+
+for(let el of hamburger){
+	console.log(el)
+}
 
 
