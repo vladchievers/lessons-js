@@ -13,7 +13,7 @@ class TodoList{
 			todo: []
 		};
 
-		this.data = JSON.parse(localStorage.getItem('todoLsit'));
+		// this.data = JSON.parse(localStorage.getItem('todoLsit'));
 		
 	}
 	init () {
@@ -22,6 +22,8 @@ class TodoList{
 			checkbox: false
 		};
 		let count = this.data.todo.length;
+		console.log(count)
+		console.log(this.data)
 
 		const ul = document.querySelector('ul');
 
@@ -52,6 +54,7 @@ class TodoList{
 		const remove = document.createElement('button');
 
 		this.data.todo.push(obj);
+		console.log(this.data)
 
 		li.appendChild(checkbox);
 		li.appendChild(title);
