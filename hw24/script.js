@@ -9,33 +9,18 @@ class CreateTask {
 	}
 
 	init(){
-		
-
 		this.data.todo.forEach((elem) =>{
 			this.add(elem);
 		});
 	}
 
 	removeTodo(id) {
-		let remIndex = -1;
-		console.log(id)
-		let data =  this.data.todo.map(function(elem, index) {
-			console.log("текущ " + id)
-			console.log(elem.id)
-			if(elem.id == id){
-				remIndex = index;
-			}
-		})
-
-		if ( remIndex > -1 ){
-			this.data.todo.splice(remIndex, 1);
-		}
+		console.log(id);
+		const ind = this.data.todo.findIndex(item => item.id == id);
+		console.log(ind);
+		this.data.todo.splice(ind, 1);
 
 		this.save();
-	}
-
-	newId() {
-		return parseInt(new Date().getMilliseconds());
 	}
 
 	newTitle () {
@@ -45,17 +30,22 @@ class CreateTask {
 	newTodo() {
 
 		const obj = {
-			id: this.newId(),
+			id: this.data.todo.length,
 			title: this.newTitle(),
 			check: false
 		};
+
+		console.log(obj)
 
 		this.save(obj);
 		this.add(obj);
 	}
 
 	save(obj) {
-		this.data.todo.push(obj);
+		if (obj) {
+			this.data.todo.push(obj);
+		}
+		
 
 		localStorage.setItem("todo", JSON.stringify(this.data));
 	}
@@ -102,7 +92,7 @@ class CreateTask {
 			const id = this.parentElement.dataset.id; 
 
 		
-			self.removeTodo(+id);
+			self.removeTodo(id);
 
 			this.parentElement.remove();
 		});
