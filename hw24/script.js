@@ -1,34 +1,82 @@
 
 class CreateTask {
 	constructor (){
-		this.data = [];
-		this.obj = {
-			title: '',
-			check: false
+		let data = localStorage.getItem("todo");
+	
+		this.data = JSON.parse(data) ||{
+			todo : [] 
 		};
-		this.count = this.data.length;
 	}
 
-	init() {
+	init(){
+		
+
+		this.data.todo.forEach((elem) =>{
+			this.add(elem);
+		});
+	}
+
+	removeTodo(id) {
+		let remIndex = -1;
+		console.log(id)
+		let data =  this.data.todo.map(function(elem, index) {
+			console.log("текущ " + id)
+			console.log(elem.id)
+			if(elem.id == id){
+				remIndex = index;
+			}
+		})
+
+		if ( remIndex > -1 ){
+			this.data.todo.splice(remIndex, 1);
+		}
+
+		this.save();
+	}
+
+	newId() {
+		return parseInt(new Date().getMilliseconds());
+	}
+
+	newTitle () {
+		return document.querySelector('.input-text').value;
+	}
+
+	newTodo() {
+
+		const obj = {
+			id: this.newId(),
+			title: this.newTitle(),
+			check: false
+		};
+
+		this.save(obj);
+		this.add(obj);
+	}
+
+	save(obj) {
+		this.data.todo.push(obj);
+
+		localStorage.setItem("todo", JSON.stringify(this.data));
+	}
+
+	add(obj){
+		if(!obj){return}
+
 		const ul = document.querySelector('ul');
 
-		
-
-		console.log(this.data)
-		console.log(this.count)
-
-		
-		const value = document.querySelector('.input-text').value;
-
 		const li = document.createElement('li');
-		li.dataset.id = this.count;
+		li.dataset.id = obj.id;
 
 		const title = document.createElement('span');
-		title.innerHTML = value;
-		this.obj.title = value;
+		title.innerHTML = obj.title;
+		
 
 		const checkbox = document.createElement('input');
 		checkbox.setAttribute("type", "checkbox");
+
+		obj.check && checkbox.setAttribute('checked');
+		
 
 		const remove = document.createElement('button');
 		remove.classList.add('remove');
@@ -41,28 +89,35 @@ class CreateTask {
 		ul.appendChild(li);
 
 
+		
 
-		localStorage.setItem("todo", this.data);
-
-		checkbox.addEventListener('click' , () =>{
-			return (checkbox.checked) ? this.obj.check = true : this.obj.check = false;
-
-			localStorage.setItem("todo", this.data);
+		checkbox.addEventListener('click' , function() {
+			console.log('1')
 		});
 
-		this.data.push(this.obj)
+		const self = this;
 
 		remove.addEventListener('click', function(){
+
+			const id = this.parentElement.dataset.id; 
+
+		
+			self.removeTodo(+id);
+
 			this.parentElement.remove();
-			localStorage.setItem("todo", this.data);
 		});
 	};
 
+	
 }
 
+const task = new CreateTask();
+task.init();
+
 document.querySelector('.save').addEventListener('click' , () =>{
-	new CreateTask().init();
-	console.log(new CreateTask())
+	
+	task.newTodo();
+	
 })
 
 
