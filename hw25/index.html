@@ -7,9 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="watch"></div>
-	<input type="number" class="alarm-time">
-	<button>alarm</button>
+	<h1 class="watch"></h1>
+	<label for="">
+		<span>Hours</span>
+		<input type="number" min="0" max="23" value="0" class="alarm-hours">
+	</label>
+	<label for="">
+		<span>Minutes</span>
+		<input type="number" min="0"  max="59" value="0" class="alarm-minutes">
+	</label>
+	
+	<button class="setAlarm">set alarm</button>
+
+	<button class="stop">STOP / reset</button>
+	<audio src="twenty-one-pilots.ogg"></audio>
 	<script src="script.js"></script>
 </body>
 </html>

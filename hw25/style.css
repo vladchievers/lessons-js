@@ -4,9 +4,41 @@
 html, body{
 	margin: 0;
 	padding: 0;
-	font-size:  1.5rem;
+	font-size:  1rem;
 	font-family: sans-serif;
 	height: 100%;
 	text-align: center;
 	padding-top: 100px;
+}
+input{
+	padding:  10px;
+	text-align:  center;
+}
+label{
+	display: inline-block;
+	margin:  5px;
+	background-color:  #ccc;
+}
+label span {
+	display: block;
+	margin:  5px 0;
+}
+h1{
+	font-size: 4rem;
+}
+button{
+	padding:  10px 20px;
+	border: 1px solid #000;
+	border-radius:  5px;
+}
+.setAlarm{
+	background-color: lightgreen;
+}
+.stop{
+	background-color: red;
+	position: absolute;
+	top:  60%;
+	left:  50%;
+	transform: translateX(-50%);
+	
 }
