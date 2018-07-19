@@ -30,15 +30,15 @@ button{
 	padding:  10px 20px;
 	border: 1px solid #000;
 	border-radius:  5px;
+	text-align: center;
 }
 .setAlarm{
 	background-color: lightgreen;
 }
 .stop{
+	display: block;
+	max-width: 200px;
+	margin: 50px auto 0;
 	background-color: red;
-	position: absolute;
-	top:  60%;
-	left:  50%;
-	transform: translateX(-50%);
 	
 }
